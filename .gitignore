@@ -1,0 +1,11 @@
+# Internal development log — kept local, not published
+TODO.md
+
+# Generated self-contained build — regenerate with: node bake.js
+dist/
+
+# Editor / OS cruft
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
