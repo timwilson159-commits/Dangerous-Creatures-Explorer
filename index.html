@@ -819,7 +819,7 @@ const CFG = {
   // Starter boat is deliberately WEAK so you must invest across many upgrade levels
   // to reach the far (and bigger) regions, you can't coast to the end on half the gear.
   baseFuel: 62,           // ~2670 px of range on a starter tank, one region, barely
-  baseSpeed: 148,
+  baseSpeed: 185,
   baseDetect: 104,        // near-blind at first; Sonar upgrades open the water up
   baseHP: 100,
   triggerR: 52,
@@ -834,7 +834,7 @@ const CFG = {
      you've just earned the reveal through the minigame, so think it through.
      A KNOWN creature gives you 10s, because by then you should have it cold.
      Ignorance isn't punished; complacency is. */
-  encTimerKnown: 10.0,
+  encTimerKnown: 15.0,
 
   /* A wrong call must really hurt, or there's no reason to buy Safety Kit. */
   dmgBase: 22,            // damage = dmgBase + severity*dmgPerSeverity
@@ -892,12 +892,12 @@ const SPECIES = [
        fb:'Right. Warm rinse first, then heat, hot water breaks down the venom and settles the pain.'},
       {icon:'🍶', label:'Pour vinegar over the stung skin', dmg:1,
        fb:'Not for this one. Vinegar is for tropical stingers like box jellyfish; on a bluebottle it can make the pain worse.'},
-      {icon:'💧', label:'Rinse it with fresh water from a drink bottle', dmg:1,
+      {icon:'💧', label:'Rinse it well with fresh water from a drink bottle to wash the stingers off', dmg:1,
        fb:'Fresh water can set off any un-fired stingers still on the skin. Use seawater, then hot water.'}]},
    /* interesting fact, it is a colony, and it cannot swim */
    {intro:'A student asks what a bluebottle actually is. What is the surprising answer?',
     actions:[
-      {icon:'💡', label:'It is not one animal, it is a colony of tiny creatures working as a team', correct:true,
+      {icon:'💡', label:'It is a colony of tiny creatures, not one animal', correct:true,
        fb:'Exactly. And it cannot swim at all, it just drifts wherever the wind blows the whole raft.'},
       {icon:'🌊', label:'It is a fast hunter that chases swimmers down', dmg:1,
        fb:'It cannot swim a stroke, the wind carries the whole raft in together. It is a drifting colony.'},
@@ -927,7 +927,7 @@ const SPECIES = [
    /* danger level, the venomous bite, and no antivenom */
    {intro:'A blue-ringed octopus is only the size of a golf ball. What makes such a tiny animal so dangerous?',
     actions:[
-      {icon:'💉', label:'Its bite injects a venom that can stop you breathing, and there is no antivenom', correct:true,
+      {icon:'💉', label:'A venomous bite that can stop your breathing', correct:true,
        fb:'Right. The bite is often painless, but the venom can paralyse breathing while the person stays fully awake.'},
       {icon:'🌀', label:'It wraps its arms around you and drags you under', dmg:4,
        fb:'No, the danger is the venomous bite, not the arms. It is a tiny, gentle-looking octopus with deadly venom.'},
@@ -940,7 +940,7 @@ const SPECIES = [
        fb:'Right. The venom can paralyse breathing while they can still hear you, rescue breaths keep them alive until help comes.'},
       {icon:'🔥', label:'Soak the bite in hot water for the pain', dmg:4,
        fb:'Hot water is for venomous-spine stings. This venom paralyses, bandage firmly, call 000, be ready to breathe for them.'},
-      {icon:'✂️', label:'Cut the bite open and suck the venom out', dmg:3,
+      {icon:'✂️', label:'Cut the bite wide open with a knife, squeeze it hard and try to suck out every drop of venom', dmg:3,
        fb:'Never, that wastes precious time. Pressure immobilisation and rescue breathing are what save them.'}]}
   ]
 },
@@ -966,7 +966,7 @@ const SPECIES = [
    /* danger level, hidden venom spines, not a bite or a chase */
    {intro:'What makes a stonefish so dangerous to someone wading barefoot?',
     actions:[
-      {icon:'👣', label:'Thirteen venom spines along its back that you cannot see until you tread on one', correct:true,
+      {icon:'👣', label:'Hidden venom spines along its back', correct:true,
        fb:'Right. It looks exactly like an encrusted rock and never moves, you find the spines by standing on them.'},
       {icon:'😬', label:'A powerful bite, it chases and snaps at feet', dmg:4,
        fb:'No, it never chases anything. The danger is standing on the hidden venom spines along its back.'},
@@ -977,7 +977,7 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water, as hot as they can comfortably stand, and call 000', correct:true,
        fb:'Right. Heat eases this venom, and there is an antivenom waiting at the hospital.'},
-      {icon:'🧊', label:'Pack ice on the foot to numb it', dmg:3,
+      {icon:'🧊', label:'Pack ice around the whole foot and hold it there to numb the pain completely', dmg:3,
        fb:'Cold does not break down this venom, hot water does. Call 000 as well.'},
       {icon:'🍶', label:'Douse the foot in vinegar', dmg:2,
        fb:'Vinegar is for tropical jellyfish stings, not a stonefish spine. Use heat and call 000.'}]}
@@ -994,7 +994,7 @@ const SPECIES = [
   actions:[
     {icon:'👣', label:'Call the stingray shuffle, slide feet, don\'t step', correct:true,
      fb:'That\'s the one. Shuffling gives the ray a gentle bump so it can glide away instead of being pinned.'},
-    {icon:'🤿', label:'Grab its tail and move it along', dmg:4,
+    {icon:'🤿', label:'Grab hold of its tail and drag it along out of everyone\'s way', dmg:4,
      fb:'The barb is on the tail, and it whips upward when the ray is grabbed. Never handle one.'},
     {icon:'🍞', label:'Throw some bait so it swims off', dmg:2,
      fb:'Feeding wildlife teaches them to hang around people, that makes the next swimmer\'s day worse, not better.'}
@@ -1005,7 +1005,7 @@ const SPECIES = [
    /* danger level, the tail barb */
    {intro:'A stingray is resting quietly on the sand. Where is the danger?',
     actions:[
-      {icon:'🎯', label:'A venomous barb partway down the tail, which whips up if it is trapped or stepped on', correct:true,
+      {icon:'🎯', label:'A venomous barb near the base of the tail', correct:true,
        fb:'Right. That is why you shuffle your feet, a bumped ray glides away instead of striking with the tail.'},
       {icon:'😬', label:'Its mouth, it bites defensively', dmg:2,
        fb:'Rays crush shellfish with flat plates and do not bite people. The weapon is the barb on the tail.'},
@@ -1016,7 +1016,7 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water for the pain and call 000; if the barb is stuck in, leave it in place', correct:true,
        fb:'Right. Pulling a barb out can make the bleeding much worse, leave it, use heat, and get help.'},
-      {icon:'✋', label:'Pull the barb straight out and rinse with cool water', dmg:2,
+      {icon:'✋', label:'Pull the barb straight out, then rinse the whole wound with cool water and bandage it', dmg:2,
        fb:'Never pull it out, that worsens the bleeding. Leave it in, heat the area, and call 000.'},
       {icon:'🍶', label:'Pour vinegar on the wound', dmg:2,
        fb:'Vinegar is for tropical stingers. A barb wound needs hot water and 000.'}]}
@@ -1046,14 +1046,14 @@ const SPECIES = [
     actions:[
       {icon:'🎯', label:'It fires a venomous harpoon that can reach right around the shell', correct:true,
        fb:'Right. There is no safe end to hold, the harpoon on its stretchy tube can reach the hand holding it.'},
-      {icon:'🤲', label:'The wide end is safe; only the pointed end can sting', dmg:4,
+      {icon:'🤲', label:'There is no safe end to hold, the harpoon can reach right around the shell to any finger', dmg:4,
        fb:'No safe end exists. The harpoon can reach around to any part of the shell.'},
       {icon:'🌊', label:'It can only sting while it is underwater', dmg:3,
        fb:'It can sting in or out of the water, people have been stung through a pocket without ever touching it.'}]},
    /* interesting fact, how it hunts */
    {intro:'How does a cone snail catch a fish?',
     actions:[
-      {icon:'🎯', label:'It fires a tiny venom-loaded harpoon on a stretchy tube, a snail that spearfishes', correct:true,
+      {icon:'🎯', label:'A snail that spearfishes with a venomous harpoon', correct:true,
        fb:'Exactly. A slow snail that harpoons fish is one of the ocean\'s strangest hunters.'},
       {icon:'🕸️', label:'It spins a sticky web across the rock pool', dmg:1,
        fb:'No webs, it harpoons its prey with a venomous dart on a stretchy tube.'},
@@ -1085,14 +1085,14 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Soak in hot water, and see a doctor for any spine you cannot easily remove', correct:true,
        fb:'Right. Heat eases the pain, and broken-off tips left deep in the skin can cause nasty infections.'},
-      {icon:'✋', label:'Dig every spine out with a needle straight away', dmg:2,
+      {icon:'✋', label:'Dig every single spine out with a needle straight away, even the deep ones you cannot see', dmg:2,
        fb:'The spines are brittle and shatter when you dig at them. Soak in hot water and let a doctor get the deep ones.'},
       {icon:'🧊', label:'Ice it and leave all the spines in for good', dmg:1,
        fb:'Hot water eases it, and spines left in can infect, a doctor should check any you cannot easily remove.'}]},
    /* interesting fact, tube feet */
    {intro:'How does a sea urchin actually move around the rocks?',
     actions:[
-      {icon:'🦶', label:'On hundreds of tiny suction-cup tube feet that reach out between the spines', correct:true,
+      {icon:'🦶', label:'On tiny tube feet between the spines', correct:true,
        fb:'Right. Those little tube feet stretch out past the spines and grip the rock to walk it along.'},
       {icon:'🌊', label:'It rolls along like a ball with the waves', dmg:1,
        fb:'No, it walks on hundreds of tiny tube feet between the spines.'},
@@ -1124,14 +1124,14 @@ const SPECIES = [
     actions:[
       {icon:'📌', label:'Lift the bristles out with sticky tape pressed on the skin, then hot water for the burn', correct:true,
        fb:'Right. Tape pulls the glass-like bristles out, then heat settles the burning feeling.'},
-      {icon:'✋', label:'Rub and scratch the area hard to work them out', dmg:1,
+      {icon:'✋', label:'Rub and scratch the area really hard to try to work the tiny bristles back out of the skin', dmg:1,
        fb:'Rubbing just snaps the bristles off deeper. Lift them with tape, then use hot water.'},
       {icon:'🧊', label:'Hold ice on it and leave the bristles in', dmg:1,
        fb:'Tape the bristles out first, then hot water eases the burn, ice does not clear them.'}]},
    /* interesting fact, the bristles */
    {intro:'What is unusual about a bristleworm\'s white bristles?',
     actions:[
-      {icon:'💡', label:'They are hollow, glass-like needles that snap off on purpose and stay behind in you', correct:true,
+      {icon:'💡', label:'Hollow glass-like needles that snap off in you', correct:true,
        fb:'Right. The worm is happy to leave them behind, they break off like fibreglass and burn for hours.'},
       {icon:'🎨', label:'They change colour to warn off predators', dmg:1,
        fb:'Nice idea, but they are actually hollow needles that snap off into whatever touches them.'},
@@ -1152,7 +1152,7 @@ const SPECIES = [
      fb:'Exactly. This is a Port Jackson shark. It crushes shellfish with flat back teeth and has no interest in people at all.'},
     {icon:'📣', label:'Clear the whole beach and close it for the day', dmg:1,
      fb:'Not every shark is a danger. Crying wolf like this means people stop listening when it really matters.'},
-    {icon:'🎣', label:'Drag it out to deeper water to be safe', dmg:2,
+    {icon:'🎣', label:'Drag it out to much deeper water so the swimmers feel safe getting back in', dmg:2,
      fb:'Handling a harmless resting animal stresses it badly, and its dorsal spines can still give you a decent jab.'}
   ],
   firstAid:'None needed. This one is a photo opportunity, not a first aid situation.',
@@ -1163,14 +1163,14 @@ const SPECIES = [
     actions:[
       {icon:'👀', label:'Enjoy watching it and give it room, there is no need to clear the water', correct:true,
        fb:'Right. It crushes shellfish with flat back teeth and is completely uninterested in people. Just let it rest.'},
-      {icon:'🎣', label:'Drag it out to deeper water to be safe', dmg:1,
+      {icon:'🎣', label:'Drag it out to much deeper water so the swimmers feel safe getting back in', dmg:1,
        fb:'No need, handling a harmless resting shark only stresses it, and its dorsal spines can still give a jab.'},
       {icon:'📣', label:'Clear the whole beach as a precaution', dmg:1,
        fb:'It is harmless, so clearing the beach is crying wolf, people stop listening when a warning really matters.'}]},
    /* interesting fact, the spiral egg case */
    {intro:'What is special about the way a Port Jackson shark lays its eggs?',
     actions:[
-      {icon:'🥚', label:'It lays a spiral, corkscrew-shaped egg case and wedges it into a rock crack', correct:true,
+      {icon:'🥚', label:'It lays a spiral egg case wedged in the rocks', correct:true,
        fb:'Right, screwed into the rock so the waves cannot wash it away. A very tidy way to protect an egg.'},
       {icon:'🐣', label:'It gives birth to live pups out in open water', dmg:1,
        fb:'No, it lays a distinctive corkscrew egg case and jams it safely into a rock crack.'},
@@ -1204,14 +1204,14 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water, as hot as they can comfortably stand, for about 20 minutes, and see a doctor', correct:true,
        fb:'Right. Heat eases the venom, and a broken-off spine can cause a nasty infection, so a doctor should check it.'},
-      {icon:'🧊', label:'Ice the hand and squeeze the venom out', dmg:2,
+      {icon:'🧊', label:'Pack ice on the hand and squeeze the puncture hard to force the venom back out', dmg:2,
        fb:'Use heat, not ice, and do not squeeze it. See a doctor if a spine has broken off.'},
       {icon:'🍶', label:'Vinegar on the puncture', dmg:2,
        fb:'Vinegar is for tropical jellyfish. A fish-spine wound needs hot water.'}]},
    /* interesting fact, devoted parents */
    {intro:'Estuary catfish have a surprising home life. What is it?',
     actions:[
-      {icon:'🥚', label:'The males guard a nest of eggs and herd the young around in a tight ball', correct:true,
+      {icon:'🥚', label:'The males guard the eggs and herd the young', correct:true,
        fb:'Right, devoted fathers. That tight ball of babies is the male keeping his brood together.'},
       {icon:'🌊', label:'They abandon the eggs to drift out to sea', dmg:1,
        fb:'The opposite, the male guards the nest and shepherds the school of young.'},
@@ -1241,9 +1241,9 @@ const SPECIES = [
    /* danger level, small, but venom spines; size is no guide */
    {intro:'A fortescue is barely the size of your thumb. Why treat it with respect anyway?',
     actions:[
-      {icon:'🎯', label:'Small dorsal spines still deliver a real venom sting, size is no guide to danger', correct:true,
+      {icon:'🎯', label:'Small spines, but a real venom sting', correct:true,
        fb:'Right. Plenty of tiny fish pack a genuine sting; never judge a fish by how small it looks.'},
-      {icon:'😬', label:'It gives a nasty bite with its teeth', dmg:2,
+      {icon:'😬', label:'It gives a nasty bite with its teeth and will chase your hand around the bucket', dmg:2,
        fb:'No, the sting comes from venomous dorsal spines, not a bite.'},
       {icon:'🌊', label:'It is only a problem when there is a whole group of them', dmg:2,
        fb:'One alone can sting you. It is the spines that matter, not the numbers.'}]},
@@ -1252,7 +1252,7 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water, as hot as can be comfortably tolerated, and watch for infection', correct:true,
        fb:'Right. The pain is sharp but the sting is rarely dangerous, heat settles it.'},
-      {icon:'🧊', label:'Numb it with an ice pack', dmg:1,
+      {icon:'🧊', label:'Numb the whole area with a big ice pack and keep it pressed on there hard for a while', dmg:1,
        fb:'Heat breaks down this venom; ice does not. Use hot water.'},
       {icon:'🍶', label:'Rinse it with vinegar', dmg:1,
        fb:'Vinegar is for tropical stingers, not a fish spine. Use hot water.'}]}
@@ -1282,14 +1282,14 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water for the pain, it stings hard but is not life-threatening', correct:true,
        fb:'Right. Heat settles the venom; the sting hurts a lot but is not dangerous.'},
-      {icon:'🍶', label:'Vinegar over the sting', dmg:1,
+      {icon:'🍶', label:'Pour plenty of household vinegar over the sting and hold it there for a while', dmg:1,
        fb:'Vinegar is for tropical jellyfish. Use hot water for a fish-spine sting.'},
       {icon:'🧊', label:'Ice pack to numb it', dmg:1,
        fb:'Heat, not cold, eases this venom.'}]},
    /* interesting fact, the grinding-teeth name */
    {intro:'How did the old wife get its name?',
     actions:[
-      {icon:'💡', label:'It makes a grinding, grunting sound with its teeth when it is caught', correct:true,
+      {icon:'💡', label:'It grinds its teeth and grunts when caught', correct:true,
        fb:'Right, sailors reckoned it sounded like a nagging complaint, so the name stuck.'},
       {icon:'🎨', label:'Its colours fade to grey as it grows old', dmg:1,
        fb:'No, the name comes from the grumbling, teeth-grinding noise it makes when landed.'},
@@ -1308,7 +1308,7 @@ const SPECIES = [
   actions:[
     {icon:'🚫', label:'Stop them, this ray delivers a powerful electric shock', correct:true,
      fb:'Exactly. A coffin ray is a living battery. It can knock a grown adult off their feet with one jolt.'},
-    {icon:'🤲', label:'Lift it carefully with two flat hands', dmg:3,
+    {icon:'🤲', label:'Lift it out carefully using two nice flat hands underneath it', dmg:3,
      fb:'There\'s no safe grip, the shock comes from the whole body, and in the water a jolt that makes you gasp is dangerous.'},
     {icon:'🖐️', label:'Give it a prod to see if it\'s alive', dmg:2,
      fb:'A prod is all it takes to trigger the shock. It stuns its prey the same way.'}
@@ -1319,18 +1319,18 @@ const SPECIES = [
    /* danger level, electric shock, not venom or bite */
    {intro:'A coffin ray does not sting and does not bite. So what is the hazard?',
     actions:[
-      {icon:'⚡', label:'It delivers a powerful electric shock that can knock an adult off their feet', correct:true,
+      {icon:'⚡', label:'It gives a strong electric shock', correct:true,
        fb:'Right. It is a living battery, a jolt that makes you gasp is dangerous when you are in the water.'},
       {icon:'🎯', label:'Venomous barbs on its tail', dmg:3,
        fb:'That is a stingray. A coffin ray\'s weapon is a powerful electric shock.'},
-      {icon:'😬', label:'A crushing bite', dmg:2,
+      {icon:'😬', label:'A crushing, powerful bite from rows of sharp teeth that it uses to catch fish', dmg:2,
        fb:'No bite, the whole body delivers an electric shock.'}]},
    /* treat injury, no sting to treat; get them out of the water */
    {intro:'Someone got a jolt from a coffin ray while wading. What matters most?',
     actions:[
       {icon:'📞', label:'Get them out of the water and sitting down, and check they are okay', correct:true,
        fb:'Right. There is no venom to treat, the real risk is the jolt making them fall or gasp underwater.'},
-      {icon:'🔥', label:'Soak the area in hot water', dmg:2,
+      {icon:'🔥', label:'Soak the whole area in hot water, as hot as they can stand, for about twenty minutes', dmg:2,
        fb:'There is no venom, so hot water does nothing. The danger is falling or gasping in the water, get them out.'},
       {icon:'🍶', label:'Pour vinegar on the skin', dmg:2,
        fb:'It is an electric shock, not a sting. Just get them out of the water and check them over.'}]}
@@ -1347,7 +1347,7 @@ const SPECIES = [
   actions:[
     {icon:'🐕', label:'Get the dog away from it, pufferfish are deadly if eaten', correct:true,
      fb:'Well done. Their flesh and organs carry a poison with no antidote. Dogs die from just mouthing a washed-up one.'},
-    {icon:'🎾', label:'Throw it out to sea for the dog to fetch', dmg:5,
+    {icon:'🎾', label:'Throw it right back out to sea and let the dog swim out to fetch it', dmg:5,
      fb:'The worst thing you could do, that\'s the dog carrying deadly poison straight to its mouth.'},
     {icon:'🤚', label:'Pick it up to show the kids how it puffs', dmg:2,
      fb:'The poison is on the skin and insides, and even a "dead" puffer has a hard beak that can nip. Leave it be.'}
@@ -1358,16 +1358,16 @@ const SPECIES = [
    /* danger level, poison if eaten, not a bite or sting */
    {intro:'A dead pufferfish has washed up. Why is it dangerous even though it is dead?',
     actions:[
-      {icon:'🚫', label:'Its flesh and organs carry a deadly poison if eaten, dogs die from just mouthing one', correct:true,
+      {icon:'🚫', label:'Deadly poison in its flesh if eaten', correct:true,
        fb:'Right. This is a poison you swallow, not a sting, and there is no antidote, keep dogs and kids away.'},
-      {icon:'😬', label:'It bites hard and chases people', dmg:2,
+      {icon:'😬', label:'It bites hard and will chase people through the water to snap at them', dmg:2,
        fb:'No, puffers are placid. The danger is the poison in the flesh and organs if it is eaten.'},
       {icon:'🎯', label:'It stings with venomous spines', dmg:2,
        fb:'Not a sting. The hazard is a poison in the body that is deadly if swallowed.'}]},
    /* interesting fact, puffs up, shares the blue-ring toxin */
    {intro:'What does a pufferfish do when it feels threatened?',
     actions:[
-      {icon:'💡', label:'It gulps water to blow up into a spiky ball too big to swallow', correct:true,
+      {icon:'💡', label:'It gulps water to puff up into a spiky ball', correct:true,
        fb:'Right, and it carries the same deadly toxin as the blue-ringed octopus.'},
       {icon:'🌊', label:'It squirts a cloud of ink and darts away', dmg:1,
        fb:'That is an octopus. A puffer inflates into a spiky ball instead.'},
@@ -1384,11 +1384,11 @@ const SPECIES = [
   cue:'A leafy, twig-like shape drifting slowly through the weed.',
   intro:'A snorkeler is chasing a seadragon through the seagrass, cupping their hands to scoop it up for a closer look.',
   actions:[
-    {icon:'👀', label:'Wave them off, watch it, don\'t touch. It\'s protected and fragile', correct:true,
+    {icon:'👀', label:'It\'s protected and fragile, watch, don\'t touch', correct:true,
      fb:'Perfect. Seadragons are a protected species and so delicate that handling can injure them. Eyes only.'},
     {icon:'🤲', label:'Catch it gently to show the kids', dmg:1,
      fb:'Even gentle handling can hurt a seadragon, and it\'s against the law to take one. Let it drift.'},
-    {icon:'📸', label:'Herd it into the shallows for a better photo', dmg:1,
+    {icon:'📸', label:'Slowly herd it into the shallows and hold it steady there for a better photo', dmg:1,
      fb:'Chasing exhausts it and can strand it. A good photo is the one you take without touching the animal.'}
   ],
   firstAid:'None needed, the weedy seadragon is completely harmless. The rule here is about protecting the animal, not yourself.',
@@ -1401,7 +1401,7 @@ const SPECIES = [
        fb:'Right. Seadragons are protected by law and so fragile that even careful handling can injure them. Eyes only.'},
       {icon:'🤲', label:'Cup it gently in your hands so the kids can see', dmg:1,
        fb:'Even gentle handling can hurt a seadragon, and it is against the law to take one. Let it drift.'},
-      {icon:'📸', label:'Herd it into the shallows for a better photo', dmg:1,
+      {icon:'📸', label:'Slowly herd it into the shallows and hold it steady there for a better photo', dmg:1,
        fb:'Chasing exhausts it and can strand it. The best photo is the one you take without touching the animal.'}]},
    /* interesting fact, the male carries the eggs */
    {intro:'What is unusual about how weedy seadragons raise their young?',
@@ -1425,7 +1425,7 @@ const SPECIES = [
   actions:[
     {icon:'🧘', label:'Tell them to stay calm and still, and let it move on', correct:true,
      fb:'Right. Sea snakes are curious, not aggressive, most just want a look. Stay still and it loses interest and swims off.'},
-    {icon:'✊', label:'Grab it behind the head and move it away', dmg:5,
+    {icon:'✊', label:'Grab it carefully behind the head and move it well out of the way', dmg:5,
      fb:'Grabbing is how the rare bites happen. Its venom is very strong, never handle one, even a small one.'},
     {icon:'🌊', label:'Thrash and splash to scare it off', dmg:3,
      fb:'Thrashing looks like a threat and can make it defensive. Calm and still is what ends the encounter safely.'}
@@ -1440,12 +1440,12 @@ const SPECIES = [
        fb:'Right. Treat it like a land-snake bite, pressure immobilisation and stillness, and there is antivenom at hospital.'},
       {icon:'🔥', label:'Soak the bite in hot water for the pain', dmg:3,
        fb:'Hot water is for venom-spine stings. A snakebite needs a pressure bandage and 000.'},
-      {icon:'✂️', label:'Cut the bite and suck out the venom', dmg:3,
+      {icon:'✂️', label:'Cut the bite open, squeeze it hard, and try to suck all of the venom back out', dmg:3,
        fb:'Never, bandage firmly, keep them still, and call 000.'}]},
    /* interesting fact, curious, and breathes through its skin */
    {intro:'A sea snake keeps circling back for a look. What is going on, and how does it stay under so long?',
     actions:[
-      {icon:'💡', label:'It is curious, not aggressive, and it can absorb some oxygen through its skin to hold a breath for hours', correct:true,
+      {icon:'💡', label:'Curious, not aggressive, and it can hold a breath for hours', correct:true,
        fb:'Right. Most just want a look, and skin-breathing lets it stay down far longer than you would expect.'},
       {icon:'🌊', label:'It has gills like a fish and never needs to surface', dmg:2,
        fb:'No, it must surface to breathe, but it tops up oxygen through its skin between breaths.'},
@@ -1479,16 +1479,16 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water, as hot as tolerable, the pain can take a while to ease, and see a doctor', correct:true,
        fb:'Right. Heat breaks down the venom, and any broken-off spine tips should be picked out.'},
-      {icon:'🧊', label:'Ice it to kill the pain', dmg:3,
+      {icon:'🧊', label:'Pack ice all around the whole area and hold it there hard to try to kill the pain off completely', dmg:3,
        fb:'Heat, not ice, breaks down this venom.'},
       {icon:'🍶', label:'Vinegar on the sting', dmg:2,
        fb:'Vinegar is for tropical jellyfish. A lionfish spine needs hot water.'}]},
    /* behaviour, the calm one is the dangerous one */
    {intro:'A lionfish hovers calmly beside the coral instead of fleeing. Why?',
     actions:[
-      {icon:'💡', label:'It has nothing to fear, those fanned venom spines protect it, so the calm one is the dangerous one', correct:true,
+      {icon:'💡', label:'Its venom spines protect it, so the calm one is the dangerous one', correct:true,
        fb:'Right. It does not flee because it does not need to. Give the slow, unbothered one plenty of room.'},
-      {icon:'🌊', label:'It is sick or exhausted and cannot swim away', dmg:2,
+      {icon:'🌊', label:'It is probably sick or exhausted, because it cannot manage to swim away from you', dmg:2,
        fb:'No, it hovers because it trusts its venomous spines, not because it is weak.'},
       {icon:'🎨', label:'It is showing off its colours to find a mate', dmg:2,
        fb:'It is simply unafraid. The fanned spines are venomous, do not touch it.'}]}
@@ -1507,7 +1507,7 @@ const SPECIES = [
      fb:'Good. Every one of those spines is venom-tipped and snaps off in your skin. Culling them is a job for trained teams with the right gear.'},
     {icon:'🤲', label:'Peel it off the coral by hand', dmg:4,
      fb:'Dozens of venomous spines, and they break off deep in the skin. The sting burns for hours and can make you very ill.'},
-    {icon:'🥾', label:'Kick it loose off the coral with your fin', dmg:3,
+    {icon:'🥾', label:'Carefully kick it loose off the coral with the very tip of your fin', dmg:3,
      fb:'That just shatters the brittle spines into the water and your leg, a dive fin is no armour against them.'}
   ],
   firstAid:'Hot water, as hot as can be comfortably tolerated, for the pain, and see a doctor, broken-off spines cause lasting pain and swelling and sometimes need removing.',
@@ -1520,12 +1520,12 @@ const SPECIES = [
        fb:'Right. They cause lasting pain and swelling and sometimes need removing by a doctor.'},
       {icon:'🧊', label:'Ice it and rub the area hard', dmg:3,
        fb:'Rubbing drives the brittle spines deeper. Use hot water and see a doctor.'},
-      {icon:'🍶', label:'Vinegar over the punctures', dmg:2,
+      {icon:'🍶', label:'Pour plenty of vinegar over all of the punctures and hold it there for the pain', dmg:2,
        fb:'Vinegar is for jellyfish. Venom spines need heat.'}]},
    /* interesting fact, everts its stomach onto the coral */
    {intro:'How does a crown-of-thorns starfish eat coral?',
     actions:[
-      {icon:'💡', label:'It pushes its stomach out through its mouth and digests the coral where it sits', correct:true,
+      {icon:'💡', label:'It digests coral with its stomach pushed out', correct:true,
        fb:'Right, one starfish can strip a dinner-plate of reef every single day that way.'},
       {icon:'🌊', label:'It scrapes the coral off with rows of teeth', dmg:1,
        fb:'No, it turns its stomach inside-out onto the coral to digest it.'},
@@ -1546,7 +1546,7 @@ const SPECIES = [
      fb:'Exactly. A moray isn\'t out to get anyone, but it bites hard at whatever enters its hole, and its back-slanted teeth mean it can\'t easily let go.'},
     {icon:'🕳️', label:'Reach in fast before it notices', dmg:3,
      fb:'That\'s how the worst reef bites happen. The eel guards that hole and clamps down on a hand it reads as a threat.'},
-    {icon:'🥢', label:'Poke a stick in to flush it out', dmg:2,
+    {icon:'🥢', label:'Poke a long stick into the hole to try to flush it out', dmg:2,
      fb:'Now it\'s cornered and defensive. Leave it be and find another way to reach the snorkel.'}
   ],
   firstAid:'It\'s a bite wound, press firmly to control the bleeding, clean it well, and see a doctor, because moray bites tear and infect easily. Never yank a hand from its mouth; let the eel release first.',
@@ -1557,14 +1557,14 @@ const SPECIES = [
     actions:[
       {icon:'✋', label:'Let the eel release first, then press to control the bleeding, clean it well and see a doctor', correct:true,
        fb:'Right. Never yank free, its back-slanted teeth tear badly, and reef bites infect easily.'},
-      {icon:'🔥', label:'Rip the hand free and soak it in hot water', dmg:3,
+      {icon:'🔥', label:'Rip the hand straight back out, then soak the whole bite in hot water for the pain', dmg:3,
        fb:'Yanking tears the wound worse. Let it release, then control the bleeding, hot water is for stings, not bites.'},
       {icon:'🍶', label:'Pour vinegar on the bite', dmg:2,
        fb:'Vinegar is for stingers. A bite needs pressure, cleaning and a doctor.'}]},
    /* interesting fact, gaping is breathing, not threat */
    {intro:'A moray sits with its mouth gaping open. Is it threatening you?',
     actions:[
-      {icon:'💡', label:'No, that constant gaping is just how it breathes, pushing water over its gills', correct:true,
+      {icon:'💡', label:'No, the gaping is just how it breathes', correct:true,
        fb:'Right. It is not out to get anyone, though you still never put a hand into its hole.'},
       {icon:'😬', label:'Yes, it is about to lunge and attack', dmg:2,
        fb:'The gaping is breathing, not a threat. It only bites what enters its hole.'},
@@ -1585,7 +1585,7 @@ const SPECIES = [
      fb:'Right. Those blue spots are a warning. Cornered under a ledge, it whips that tail up over its back, and the barbs carry venom.'},
     {icon:'✋', label:'Stroke its back while it sits still', dmg:3,
      fb:'The tail lashes over the back the instant the ray feels trapped, straight into the hand resting there.'},
-    {icon:'🚧', label:'Block the ledge so it can\'t dart off', dmg:2,
+    {icon:'🚧', label:'Block off the ledge so it cannot dart away from you', dmg:2,
      fb:'Trapping it is exactly what makes it strike. Give it an open path and it just glides away.'}
   ],
   firstAid:'Hot water for the pain, and call 000 for anything worse than a minor jab. If a barb is stuck in, leave it in place, pulling it out makes the bleeding much worse.',
@@ -1596,14 +1596,14 @@ const SPECIES = [
     actions:[
       {icon:'🔥', label:'Hot water for the pain, and call 000 for anything worse than a minor jab; leave a stuck barb in place', correct:true,
        fb:'Right. Pulling a barb out makes the bleeding much worse, leave it, use heat, and get help.'},
-      {icon:'✋', label:'Pull the barb out and rinse in cool water', dmg:2,
+      {icon:'✋', label:'Pull the barb straight out, rinse the whole wound in cool water and then wrap it up tightly to stop the pain', dmg:2,
        fb:'Leave the barb in, pulling it out worsens the bleeding. Use heat and 000.'},
       {icon:'🍶', label:'Vinegar on the wound', dmg:2,
        fb:'Vinegar is for tropical jellies. A barb wound needs hot water.'}]},
    /* behaviour, brighter blue means alarmed */
    {intro:'A bluespotted ray suddenly flushes its blue spots brighter. What does that mean?',
     actions:[
-      {icon:'🔵', label:'It is alarmed, the brighter the blue, the more it wants to be left alone', correct:true,
+      {icon:'🔵', label:'The brighter the blue, the more alarmed it is', correct:true,
        fb:'Right. Those blue spots are a warning signal, not an invitation. Give it an open path and it glides away.'},
       {icon:'🎨', label:'It is trying to attract a mate', dmg:2,
        fb:'No, brighter blue means alarmed. Back off and give it room.'},
@@ -1633,7 +1633,7 @@ const SPECIES = [
    /* avoid injury, which way to swim off a nest */
    {intro:'A nesting titan triggerfish is charging up at a diver. Which way should you go, and why?',
     actions:[
-      {icon:'🏊', label:'Swim away flat and level, its guarded territory is a cone that widens toward the surface', correct:true,
+      {icon:'🏊', label:'Swim away flat and level, not up', correct:true,
        fb:'Right. The nest zone gets wider the higher you go, so you leave sideways, never straight up.'},
       {icon:'⬆️', label:'Kick straight up to the surface', dmg:3,
        fb:'Wrong way, the territory is widest up there. Rising into it is how divers get bitten on the legs and fins.'},
@@ -1644,7 +1644,7 @@ const SPECIES = [
     actions:[
       {icon:'✋', label:'Control the bleeding, clean it thoroughly, and see a doctor, reef bites infect easily', correct:true,
        fb:'Right. It is a wound, not a venom, so cleaning and bleeding control are what matter.'},
-      {icon:'🔥', label:'Soak it in hot water', dmg:2,
+      {icon:'🔥', label:'Soak the whole bite in hot water, as hot as you can stand, for about twenty minutes', dmg:2,
        fb:'Hot water is for venom stings. A bite needs cleaning and bleeding control.'},
       {icon:'🍶', label:'Vinegar on the bite', dmg:2,
        fb:'Vinegar is for stingers. Clean the wound and see a doctor.'}]}
@@ -1681,9 +1681,9 @@ const SPECIES = [
    /* interesting fact, it can rest still and breathe */
    {intro:'Where do you often find whitetip reef sharks during the day, and why?',
     actions:[
-      {icon:'💡', label:'Resting in caves, unlike the big open-ocean sharks, they can pump water over their gills while lying still', correct:true,
+      {icon:'💡', label:'Resting in caves, they can breathe while lying still', correct:true,
        fb:'Right. Most big sharks must keep swimming to breathe; whitetips can take a rest on the bottom.'},
-      {icon:'🌊', label:'Racing in open water, because they must keep swimming to breathe', dmg:1,
+      {icon:'🌊', label:'Racing along in open water, because like most sharks they must keep swimming to breathe', dmg:1,
        fb:'That is the big pelagic sharks. Whitetips can rest still and still breathe.'},
       {icon:'🏖️', label:'Beached on the sand, warming up in the sun', dmg:1,
        fb:'No, they rest in reef caves, pumping water over their gills.'}]}
@@ -1698,7 +1698,7 @@ const SPECIES = [
   cue:'A car-sized, blotchy grey fish drifting over to say hello.',
   intro:'An enormous, friendly potato cod glides right up to a diver, who reaches for a squeeze-tube of food to hand-feed it for a photo.',
   actions:[
-    {icon:'🚫', label:'Don\'t feed it, enjoy it up close, keep the food away', correct:true,
+    {icon:'🚫', label:'Enjoy it up close, keep food away', correct:true,
      fb:'Good call. Potato cod are protected and curious, not dangerous, but hand-feeding turns them into pushy beggars and is bad for their health.'},
     {icon:'🍤', label:'Hand-feed it so it hangs around', dmg:1,
      fb:'A fish this size gets grabby around food, and that bucket-sized mouth can give a real fright, or a graze, snatching a snack from your hand.'},
@@ -1711,7 +1711,7 @@ const SPECIES = [
    /* harmless + protected, do not feed */
    {intro:'A huge, friendly potato cod swims right up to a diver. It is protected and gentle. What is the best thing to do?',
     actions:[
-      {icon:'👀', label:'Enjoy it up close but keep any food away, do not hand-feed it', correct:true,
+      {icon:'👀', label:'Enjoy it up close, but keep all food away', correct:true,
        fb:'Right. Feeding turns these gentle giants into pushy beggars and is bad for their health.'},
       {icon:'🍤', label:'Hand-feed it so it hangs around for photos', dmg:1,
        fb:'A fish this size gets grabby around food, and that bucket-sized mouth can give a real fright snatching a snack.'},
@@ -1720,9 +1720,9 @@ const SPECIES = [
    /* interesting fact, long-lived, recognises divers */
    {intro:'What is remarkable about potato cod at a few famous reefs?',
     actions:[
-      {icon:'💡', label:'They can live 50 years and recognise the regular divers, swimming over to investigate', correct:true,
+      {icon:'💡', label:'They live 50 years and know the regular divers', correct:true,
        fb:'Right, big, gentle, long-lived fish that seem to know their regulars.'},
-      {icon:'🌊', label:'They live only a year or two and never grow large', dmg:1,
+      {icon:'🌊', label:'They live only a year or two, never grow large, and dart away from any diver they see', dmg:1,
        fb:'No, they reach two metres and can live around 50 years.'},
       {icon:'🐣', label:'They gather in huge schools far out in the open ocean', dmg:1,
        fb:'No, they are big, mostly solitary reef fish that recognise familiar divers.'}]}
@@ -1756,14 +1756,14 @@ const SPECIES = [
        fb:'Right. Blood loss is the killer, controlling the bleeding fast is everything.'},
       {icon:'🔥', label:'Soak the wound in hot water', dmg:5,
        fb:'A bite is not a venom sting. Control the bleeding and call 000.'},
-      {icon:'🌊', label:'Keep them in the water to rinse the wound clean', dmg:5,
+      {icon:'🌊', label:'Keep them in the water and gently rinse the wound clean, the cool salt water will help slow the bleeding', dmg:5,
        fb:'Get them OUT of the water, stopping the bleeding on land is what saves them.'}]},
    /* danger/behaviour, usually curious, do not provoke */
    {intro:'Most people bitten by a great white are released after a single investigating bite. What does that tell you to do in the water?',
     actions:[
-      {icon:'🧘', label:'Stay calm and give it no reason to stay, it is usually curious, not hungry', correct:true,
+      {icon:'🧘', label:'Stay calm, it is usually curious, not hungry', correct:true,
        fb:'Right. Panicked thrashing is what turns a curious shark into an interested one. Group up and leave smoothly.'},
-      {icon:'🌊', label:'Splash and kick as hard as you can to look big', dmg:5,
+      {icon:'🌊', label:'Splash and kick as hard as you possibly can to make yourself look big and scare it off', dmg:5,
        fb:'Frantic splashing mimics a struggling seal, the exact signal that switches a shark to hunting.'},
       {icon:'🤿', label:'Dive down for a photo while it seems calm', dmg:5,
        fb:'Never close the distance on a white shark. Keep it in sight and leave the water.'}]}
@@ -1782,7 +1782,7 @@ const SPECIES = [
      fb:'Good. A still-lively marlin can drive that bill clean through a hand or a chest with one head-shake. Let it tire, and use a trace and gloves.'},
     {icon:'🤚', label:'Grab the bill and haul it aboard', dmg:5,
      fb:'That bill is a spear backed by a hundred kilos of muscle. Anglers have been run through doing exactly this.'},
-    {icon:'🎣', label:'Lean right over to unhook it quickly', dmg:4,
+    {icon:'🎣', label:'Lean right over the side of the boat to unhook it as quickly as you can', dmg:4,
      fb:'Leaning over a green billfish puts your chest in the strike zone. Keep low behind the gunwale.'}
   ],
   firstAid:'A bill wound is a deep puncture, if the bill is still stuck in, leave it in place and pack around it; otherwise press hard to control the bleeding and call 000. Deep punctures bleed where you can\'t see.',
@@ -1791,9 +1791,9 @@ const SPECIES = [
    /* danger level, the bill is a spear */
    {intro:'Why is a lively black marlin so dangerous right at the side of the boat?',
     actions:[
-      {icon:'🎯', label:'Its bill is a spear backed by a hundred kilos of muscle, one head-shake can run it through you', correct:true,
+      {icon:'🎯', label:'Its bill is a spear driven by a huge, powerful fish', correct:true,
        fb:'Right. Let it tire before you handle it, and keep low behind the gunwale, using a trace and gloves.'},
-      {icon:'😬', label:'It has a crushing, powerful bite', dmg:4,
+      {icon:'😬', label:'It has a crushing, powerful bite and will chase a swimmer down to use it', dmg:4,
        fb:'It is the bill that is the danger, not a bite.'},
       {icon:'🚫', label:'Venomous spines run along its back', dmg:3,
        fb:'No venom, the hazard is that long, spear-like bill.'}]},
@@ -1802,7 +1802,7 @@ const SPECIES = [
     actions:[
       {icon:'🧤', label:'Leave the bill in place, pack around it, control the bleeding and call 000', correct:true,
        fb:'Right. Deep punctures bleed where you cannot see, a stuck object is best left in until hospital.'},
-      {icon:'✋', label:'Pull the bill out and rinse the wound', dmg:4,
+      {icon:'✋', label:'Pull the bill straight out, then rinse the deep wound out with plenty of clean water', dmg:4,
        fb:'Leave it in, pulling it out can unleash hidden bleeding. Pack around it and call 000.'},
       {icon:'🔥', label:'Soak the puncture in hot water', dmg:3,
        fb:'It is a wound, not a sting. Leave the bill in, pack around it, and call 000.'}]}
@@ -1821,7 +1821,7 @@ const SPECIES = [
      fb:'Perfect. Mantas are gentle and completely harmless, no barb at all, unlike a stingray. But touching wipes off the mucus that protects their skin.'},
     {icon:'🤚', label:'Grab a wing and go for a ride', dmg:1,
      fb:'Never ride wildlife. It strips their protective coating and exhausts them, and a startled manta\'s wing can knock you spinning.'},
-    {icon:'🤿', label:'Chase it down for a close-up', dmg:1,
+    {icon:'🤿', label:'Chase it down through the water to get yourself a good close-up', dmg:1,
      fb:'Chasing just drives it away and tires it out. Float still and a curious manta will often circle back on its own.'}
   ],
   firstAid:'None needed, a manta ray is harmless. Unlike its stingray cousins it has no barb at all. The rule here is to protect the animal, not yourself.',
@@ -1830,16 +1830,16 @@ const SPECIES = [
    /* clear up the stingray confusion, manta has no barb */
    {intro:'How is a giant manta ray different from its stingray cousins?',
     actions:[
-      {icon:'👀', label:'It is harmless with no barb at all, watch it, do not touch (touching wipes off its protective mucus)', correct:true,
+      {icon:'👀', label:'Harmless, no barb at all, watch but don\'t touch', correct:true,
        fb:'Right. A manta glides on huge wings and could not hurt you if it tried, but its skin needs protecting.'},
-      {icon:'🎯', label:'It has an even bigger, more venomous tail barb', dmg:1,
+      {icon:'🎯', label:'It has an even bigger, more venomous tail barb than an ordinary stingray does', dmg:1,
        fb:'No, unlike a stingray, a manta has no barb at all. It is completely harmless.'},
       {icon:'🤚', label:'It is safe and fun to grab a wing and ride', dmg:1,
        fb:'Never ride wildlife. It strips their protective coating and tires them, and a startled manta can knock you spinning.'}]},
    /* interesting fact, big brain, self-recognition */
    {intro:'What is remarkable about a manta ray\'s mind?',
     actions:[
-      {icon:'💡', label:'It has the biggest brain of any fish and may even recognise itself in a mirror', correct:true,
+      {icon:'💡', label:'The biggest brain of any fish, it may know its own reflection', correct:true,
        fb:'Right, a genuinely clever animal, and each one\'s belly spots are unique as a fingerprint.'},
       {icon:'🌊', label:'It has almost no brain and just drifts with the current', dmg:1,
        fb:'The opposite, it has the biggest brain of any fish.'},
@@ -1858,7 +1858,7 @@ const SPECIES = [
   actions:[
     {icon:'🛑', label:'Ease off, hold well back and let them pass', correct:true,
      fb:'Right. It\'s the law to keep your distance, further still with a calf, and for good reason: one flick of a tail that size can crush a boat.'},
-    {icon:'🚤', label:'Motor right up alongside for a photo', dmg:3,
+    {icon:'🚤', label:'Motor the boat right up alongside them so everyone gets a really close-up photo', dmg:3,
      fb:'Too close is illegal and dangerous. A startled whale can breach or slap a fluke down on the boat without ever meaning you harm.'},
     {icon:'🏊', label:'Jump in and swim out to them', dmg:2,
      fb:'Swimming up to a wild whale and calf stresses them and puts you under tonnes of unpredictable animal. Watch from a distance.'}
@@ -1871,16 +1871,16 @@ const SPECIES = [
     actions:[
       {icon:'🛑', label:'Hold well back and let them pass, keep even further away when there is a calf', correct:true,
        fb:'Right. Keeping your distance is the law, and one flick of a tail that size can crush a boat.'},
-      {icon:'🚤', label:'Motor right up alongside for a photo', dmg:3,
+      {icon:'🚤', label:'Motor the boat right up alongside them so everyone gets a really close-up photo', dmg:3,
        fb:'Too close is illegal and dangerous, a startled whale can breach or slap a fluke onto the boat.'},
       {icon:'🏊', label:'Jump in and swim out to them', dmg:2,
        fb:'That stresses them and puts you under tonnes of unpredictable animal. Watch from a distance.'}]},
    /* interesting fact, the migration */
    {intro:'What is special about humpback whales along Australia\'s coast each winter?',
     actions:[
-      {icon:'💡', label:'Thousands migrate up the coast, one of the biggest animal journeys on Earth, watchable from the headland', correct:true,
+      {icon:'💡', label:'Thousands migrate past the coast each year', correct:true,
        fb:'Right. You can see one of the planet\'s great migrations for free from a clifftop each winter.'},
-      {icon:'🌊', label:'They stay in one bay all year and never travel', dmg:1,
+      {icon:'🌊', label:'They stay in the one small bay all year round and never travel anywhere along the coast', dmg:1,
        fb:'No, they migrate thousands of kilometres up the coast every winter.'},
       {icon:'❄️', label:'They live under the Antarctic ice and never come to the surface', dmg:1,
        fb:'They journey up Australia\'s warm coast in winter, easy to spot from the shore.'}]}
@@ -1899,7 +1899,7 @@ const SPECIES = [
      fb:'Sharp eyes. A wobbegong is a carpet shark that lies still and camouflaged, and it bites fast and hangs on if a hand lands on it.'},
     {icon:'🤚', label:'Rest a hand on it to push up', dmg:3,
      fb:'That\'s the classic wobbegong bite. It clamps down out of pure reflex and can be very hard to shake off.'},
-    {icon:'🥾', label:'Nudge its tail with a fin to move it', dmg:3,
+    {icon:'🥾', label:'Nudge its tail with the tip of a fin to make it move off', dmg:3,
      fb:'Poke or tread on a wobbegong and it whips around to bite. Just go around it.'}
   ],
   firstAid:'A wobbegong bite is a wound, and it may not let go, don\'t rip your hand free, which tears it worse. Let the shark release, then control the bleeding, clean well and see a doctor.',
@@ -1908,18 +1908,18 @@ const SPECIES = [
    /* danger level, camouflage is why people get bitten */
    {intro:'Why do people get bitten by wobbegongs?',
     actions:[
-      {icon:'👀', label:'It is a flat, camouflaged carpet shark, people put a hand on it thinking it is rock', correct:true,
+      {icon:'👀', label:'A flat, camouflaged carpet shark, easily mistaken for rock', correct:true,
        fb:'Right. It lies still and blends in, then bites fast and hangs on if a hand lands on it.'},
       {icon:'😬', label:'It chases and attacks swimmers out in open water', dmg:3,
        fb:'No, it lies still and camouflaged. Bites happen when it is touched or trodden on.'},
-      {icon:'⚡', label:'It gives an electric shock', dmg:2,
+      {icon:'⚡', label:'It gives a strong electric shock through the water to anything that touches it', dmg:2,
        fb:'No shock, it is a bite from a well-hidden shark. Watch where you put your hands.'}]},
    /* treat injury, do not rip free */
    {intro:'A wobbegong has bitten a snorkeler\'s hand and will not let go. What do you do?',
     actions:[
       {icon:'✋', label:'Do not rip free, let it release, then control the bleeding, clean well and see a doctor', correct:true,
        fb:'Right. Tearing your hand out makes the wound far worse. Let the shark release first.'},
-      {icon:'🔥', label:'Yank the hand out and soak it in hot water', dmg:3,
+      {icon:'🔥', label:'Yank the hand straight out of its mouth and then soak the whole bite in hot water for the pain', dmg:3,
        fb:'Ripping free tears it worse, and hot water is for venom, not bites. Let it release, then control bleeding.'},
       {icon:'🍶', label:'Pour vinegar on the bite', dmg:2,
        fb:'Vinegar is for stingers. A bite needs cleaning and a doctor.'}]}
@@ -1947,7 +1947,7 @@ const SPECIES = [
    /* avoid trouble, give the bull seal room */
    {intro:'Fur seals look playful on the rocks. How should a kayaker treat a big bull seal?',
     actions:[
-      {icon:'🚫', label:'Give them room, especially the big male, and watch from a distance', correct:true,
+      {icon:'🚫', label:'Give them room, watch from a distance', correct:true,
        fb:'Right. A bull seal is huge and territorial, and a seal bite tears and infects badly.'},
       {icon:'🤳', label:'Paddle in close for a selfie with the big one', dmg:2,
        fb:'Crowd a bull seal and it will lunge and bite to defend its patch, deep, filthy wounds.'},
@@ -1958,7 +1958,7 @@ const SPECIES = [
     actions:[
       {icon:'✋', label:'High infection risk, control the bleeding, clean it thoroughly, and see a doctor about antibiotics', correct:true,
        fb:'Right. "Seal finger" infections are notorious, so a doctor may start antibiotics.'},
-      {icon:'🔥', label:'Soak it in hot water and leave it open to the air', dmg:2,
+      {icon:'🔥', label:'Soak it in hot water for a while, then leave the whole wound open to the air so it can dry out and heal', dmg:2,
        fb:'Hot water is for venom stings. A seal bite needs cleaning and a doctor for the infection risk.'},
       {icon:'🌊', label:'Rinse it in seawater and ignore it, seal bites are clean', dmg:2,
        fb:'The opposite, they infect badly. Clean it well and see a doctor.'}]}
@@ -1977,7 +1977,7 @@ const SPECIES = [
      fb:'Nice. An ocean sunfish is a gentle giant that eats jellyfish and couldn\'t hurt you if it tried, so let it drift in peace and enjoy the sight.'},
     {icon:'🤚', label:'Climb onto its back for a photo', dmg:1,
      fb:'It\'s harmless, but clambering on any wild animal stresses it and damages its skin. Look, don\'t touch.'},
-    {icon:'🚤', label:'Rev the boat over for a closer look', dmg:1,
+    {icon:'🚤', label:'Rev the boat right over the top of it a few times to get a much closer look', dmg:1,
      fb:'Sunfish bask right at the surface and are struck by boats all the time. Idle past and give it room.'}
   ],
   firstAid:'None needed, the ocean sunfish is completely harmless. The care here is for the fish: it sunbathes at the surface and is easily hurt by boats and handling.',
@@ -1995,7 +1995,7 @@ const SPECIES = [
    /* interesting fact, the heaviest bony fish */
    {intro:'What record does the ocean sunfish hold?',
     actions:[
-      {icon:'💡', label:'It is the heaviest bony fish in the world, as much as a small car', correct:true,
+      {icon:'💡', label:'The heaviest bony fish in the world', correct:true,
        fb:'Right, and a female can carry more eggs at once than any other animal on the planet.'},
       {icon:'🌊', label:'It is the fastest fish in the sea', dmg:1,
        fb:'No, it is a slow drifter, but it is the heaviest bony fish alive.'},
@@ -2029,14 +2029,14 @@ const SPECIES = [
     actions:[
       {icon:'🍶', label:'Flood the stung skin with plenty of vinegar for at least 30 seconds, and be ready to start CPR', correct:true,
        fb:'Right. Vinegar stops the un-fired stingers from firing. Never rub it, and never use fresh water.'},
-      {icon:'💧', label:'Rinse it with fresh water and rub the tentacles off', dmg:5,
+      {icon:'💧', label:'Rinse it with plenty of fresh water and rub all of the tentacles off with your hand', dmg:5,
        fb:'Fresh water and rubbing fire more stingers. Flood with vinegar instead, and be ready for CPR.'},
-      {icon:'🔥', label:'Soak it in hot water', dmg:4,
+      {icon:'🔥', label:'Soak the whole bite in hot water, as hot as you can stand, for about twenty minutes', dmg:4,
        fb:'For a tropical box jelly it is vinegar first, then 000 and CPR, not hot water.'}]},
    /* interesting fact, 24 eyes, it hunts */
    {intro:'What makes a box jellyfish different from an ordinary drifting jellyfish?',
     actions:[
-      {icon:'💡', label:'It has 24 eyes and actively swims and steers to hunt, rather than just drifting', correct:true,
+      {icon:'💡', label:'It has 24 eyes and swims to hunt, not just drifting', correct:true,
        fb:'Right, one of the very few jellyfish that hunts rather than going wherever the current takes it.'},
       {icon:'🌊', label:'It has no eyes and only drifts on the current', dmg:2,
        fb:'No, it has 24 eyes and actively swims to hunt.'},
@@ -2057,7 +2057,7 @@ const SPECIES = [
      fb:'Right. An irukandji is barely a centimetre across, but its sting brings on Irukandji syndrome, waves of agony, vomiting and a racing heart, half an hour later.'},
     {icon:'🤿', label:'Duck under the net for a clearer shot', dmg:4,
      fb:'Those tiny stingers slip through where big jellies can\'t. The sting feels minor at first, then the syndrome hits like a truck.'},
-    {icon:'✋', label:'Catch it in a cupped hand to show them', dmg:4,
+    {icon:'✋', label:'Catch it in a cupped hand to show them how tiny and harmless it looks', dmg:4,
      fb:'Even the lightest brush delivers the venom. You can barely see it, which is exactly what makes it so dangerous.'}
   ],
   firstAid:'Flood the area with plenty of VINEGAR and call 000, the severe symptoms are delayed twenty to forty minutes, so anyone stung in the tropics needs close watching and a fast trip to hospital.',
@@ -2066,18 +2066,18 @@ const SPECIES = [
    /* danger level, tiny, but delayed Irukandji syndrome */
    {intro:'An irukandji is barely a centimetre across. Why is such a tiny jellyfish so feared?',
     actions:[
-      {icon:'🎯', label:'Its sting triggers Irukandji syndrome, waves of agony, vomiting and a racing heart, about half an hour later', correct:true,
+      {icon:'🎯', label:'Its sting brings on severe symptoms about half an hour later', correct:true,
        fb:'Right. The sting feels minor at first, and the delay is the trap, the severe symptoms come later.'},
       {icon:'😬', label:'It gives a huge painful bite you feel straight away', dmg:4,
        fb:'No, the sting feels minor at first, then the syndrome hits like a truck half an hour later.'},
-      {icon:'🌊', label:'It is only dangerous in a large swarm', dmg:4,
+      {icon:'🌊', label:'It is only ever dangerous when there is a large swarm of them together in the water', dmg:4,
        fb:'A single tiny one can cause the syndrome. That, and being nearly invisible, is why it is feared.'}]},
    /* treat injury, vinegar, watch closely, delayed symptoms */
    {intro:'Someone has been stung by an irukandji. What is the best first aid?',
     actions:[
       {icon:'🍶', label:'Flood with vinegar and call 000, watch them closely, the severe symptoms are delayed', correct:true,
        fb:'Right. Twenty to forty minutes later it can hit hard, so anyone stung needs watching and a fast trip to hospital.'},
-      {icon:'💧', label:'Rinse with fresh water and send them on their way', dmg:4,
+      {icon:'💧', label:'Rinse it off with fresh water and send them on their way once the pain settles down a bit', dmg:4,
        fb:'Fresh water fires stingers, and the danger is delayed. Vinegar and 000, then watch them closely.'},
       {icon:'🔥', label:'Hot water and a painkiller at home', dmg:4,
        fb:'This needs vinegar, 000 and hospital watching, the syndrome comes on later.'}]}
@@ -2094,7 +2094,7 @@ const SPECIES = [
   actions:[
     {icon:'🚫', label:'Get them out now, no swimming here at dusk, stop the scraps', correct:true,
      fb:'Right. Bull sharks hunt these murky river mouths at dawn and dusk, and food scraps call them straight in. Out of the water is the only safe answer.'},
-    {icon:'🍖', label:'Throw more scraps to lure it away from the kids', dmg:5,
+    {icon:'🍖', label:'Throw a few more scraps in to try to lure it away from the kids', dmg:5,
      fb:'Scraps draw it closer and teach it there\'s food here. Never chum the water people are swimming in.'},
     {icon:'🏊', label:'Tell them to swim calmly to the far bank', dmg:4,
      fb:'A bull shark is fast and bold in its own murky territory, the water itself is the danger. Get out the nearest bank, don\'t swim across.'}
@@ -2105,16 +2105,16 @@ const SPECIES = [
    /* avoid injury, murky river mouths, dusk, scraps */
    {intro:'Why are dusk, a murky river mouth and food scraps such a dangerous mix with bull sharks?',
     actions:[
-      {icon:'🚫', label:'Bull sharks hunt murky river mouths at dawn and dusk, and scraps call them in, get out and stop the scraps', correct:true,
+      {icon:'🚫', label:'Bull sharks hunt murky river mouths, and scraps draw them in', correct:true,
        fb:'Right. The murky water and the food are both pulling the shark in, out of the water is the only safe answer.'},
-      {icon:'🍖', label:'Throw more scraps to lure it away from the kids', dmg:5,
+      {icon:'🍖', label:'Throw a few more scraps in to try to lure it away from the kids', dmg:5,
        fb:'Scraps draw it closer and teach it there is food here. Never chum water people are swimming in.'},
-      {icon:'🏊', label:'Have everyone swim calmly across to the far bank', dmg:4,
+      {icon:'🏊', label:'Tell everyone to swim slowly and calmly across to the far bank without making a splash', dmg:4,
        fb:'A bull shark is fast and bold in its own murky water. Get out the nearest bank, do not swim across it.'}]},
    /* interesting fact, freshwater tolerance */
    {intro:'What can bull sharks do that almost no other shark can?',
     actions:[
-      {icon:'💡', label:'Live in fresh water, they have been found hundreds of kilometres up rivers', correct:true,
+      {icon:'💡', label:'They live in fresh water, found far up rivers', correct:true,
        fb:'Right, even turning up in flooded suburban creeks and golf-course lakes.'},
       {icon:'🌊', label:'Survive out of the water on land for hours', dmg:2,
        fb:'No, but uniquely they can live in fresh water far up rivers.'},
@@ -2148,12 +2148,12 @@ const SPECIES = [
        fb:'Right. That explosive ambush is why you stay metres back from the water in croc country.'},
       {icon:'🏃', label:'It chases prey overland for long distances', dmg:5,
        fb:'No, it ambushes from the water\'s edge. Stay well back from the bank.'},
-      {icon:'😴', label:'It is slow and sleepy and easy to keep an eye on up close', dmg:5,
+      {icon:'😴', label:'It is slow and sleepy, so it is easy to keep a close eye on it from the edge', dmg:5,
        fb:'Deadly wrong, it launches from the shallows in an instant. Never get close.'}]},
    /* interesting fact, largest reptile, hour-long breath-hold */
    {intro:'What record does the saltwater crocodile hold?',
     actions:[
-      {icon:'💡', label:'It is the largest living reptile, big old males can outweigh a car, and can hold its breath for an hour', correct:true,
+      {icon:'💡', label:'The largest living reptile, holds its breath an hour', correct:true,
        fb:'Right. It waits motionless underwater for up to an hour, which is exactly what makes it so dangerous.'},
       {icon:'🌊', label:'It is a small, shy reptile that avoids all water', dmg:3,
        fb:'No, it is the largest living reptile and an ambush hunter in the water.'},
@@ -2172,7 +2172,7 @@ const SPECIES = [
   actions:[
     {icon:'🚫', label:'Stop them, the "flowers" are venom, don\'t touch it', correct:true,
      fb:'Good. Those pretty flower-like tips are venomous pincers. The flower urchin is one of the most dangerous urchins in the world, the beauty is the warning.'},
-    {icon:'🤲', label:'Lift it out gently to show everyone', dmg:4,
+    {icon:'🤲', label:'Lift it out of the water gently to show everyone the pretty flowers', dmg:4,
      fb:'The flower-like pincers grip the skin and pump venom, a bad sting brings pain, numbness, even trouble breathing.'},
     {icon:'🥾', label:'Crush it underfoot to be safe', dmg:3,
      fb:'Standing on it drives the venomous pincers into your foot. Just leave it be and steer people around it.'}
@@ -2183,18 +2183,18 @@ const SPECIES = [
    /* danger level, the pretty flowers are venom */
    {intro:'A flower urchin is the prettiest thing in a tropical rock pool. What are the "flowers"?',
     actions:[
-      {icon:'🌸', label:'Venomous pincers, one of the most dangerous urchins in the world; the beauty is the warning', correct:true,
+      {icon:'🌸', label:'Venomous pincers, the beauty is the warning', correct:true,
        fb:'Right. Those flower-like tips are hundreds of tiny venomous jaws. The prettiness is exactly the danger.'},
       {icon:'🎨', label:'Harmless petals it uses to attract a mate', dmg:4,
        fb:'No, the "flowers" are venomous jaws. Do not touch it.'},
-      {icon:'🎯', label:'Sharp but venom-free spines, like a normal urchin', dmg:4,
+      {icon:'🎯', label:'Just sharp but venom-free spines, exactly like any other normal rock-pool urchin', dmg:4,
        fb:'No, its flower-like pincers pump venom, making it far more dangerous than an ordinary urchin.'}]},
    /* treat injury, hot water, get help fast */
    {intro:'Someone has been stung by a flower urchin and is feeling numb. What is the best first aid?',
     actions:[
       {icon:'🔥', label:'Hot water, pick off any attached pincers, and get to a doctor fast', correct:true,
        fb:'Right. A serious flower-urchin sting can affect breathing, so heat and fast help both matter.'},
-      {icon:'🧊', label:'Ice it and rest at home', dmg:4,
+      {icon:'🧊', label:'Numb it with a big ice pack and just rest at home until the pain settles down on its own', dmg:4,
        fb:'Use hot water and get help fast, a bad sting can affect breathing.'},
       {icon:'🍶', label:'Vinegar on it', dmg:3,
        fb:'Vinegar is for jellyfish. This venom needs hot water and a doctor.'}]}
@@ -2211,7 +2211,7 @@ const SPECIES = [
   actions:[
     {icon:'🛑', label:'Ease off and keep well clear, let it graze', correct:true,
      fb:'Right. Dugongs are gentle, protected "sea cows" and no threat at all, but they\'re slow, and boat and jet-ski strikes are one of the biggest dangers they face.'},
-    {icon:'🚤', label:'Buzz in close and circle it a few times', dmg:1,
+    {icon:'🚤', label:'Buzz in close and circle it a few times so everyone on the boat gets a good look', dmg:1,
      fb:'Harassing a dugong is illegal, and cornering it in the shallows just stresses and endangers a protected animal. Slow down and back off.'},
     {icon:'🤿', label:'Dive down and grab on for a ride', dmg:1,
      fb:'Never ride wildlife. It exhausts the dugong and stops it surfacing to breathe. Watch from a respectful distance.'}
@@ -2224,16 +2224,16 @@ const SPECIES = [
     actions:[
       {icon:'🛑', label:'Ease off and keep well clear, let it graze', correct:true,
        fb:'Right. Dugongs are no threat at all, but they are slow, and boat and jet-ski strikes are one of their biggest dangers.'},
-      {icon:'🚤', label:'Buzz in close and circle it a few times', dmg:1,
+      {icon:'🚤', label:'Buzz in close and circle it a few times so everyone on the boat gets a good look', dmg:1,
        fb:'Harassing a dugong is illegal, and cornering it in the shallows just stresses a protected animal.'},
       {icon:'🤿', label:'Dive down and grab on for a ride', dmg:1,
        fb:'Never ride wildlife, it exhausts the dugong and stops it surfacing to breathe.'}]},
    /* interesting fact, the mermaid legend */
    {intro:'What old sailors\' legend are dugongs thought to be behind?',
     actions:[
-      {icon:'💡', label:'Mermaids, and a single dugong can munch through forty kilos of seagrass in a day', correct:true,
+      {icon:'💡', label:'Mermaids; a dugong eats forty kilos of seagrass a day', correct:true,
        fb:'Right. Sailors glimpsing these gentle grazers are thought to have started the mermaid tales.'},
-      {icon:'🦈', label:'Sea monsters that attacked and sank ships', dmg:1,
+      {icon:'🦈', label:'Fierce sea monsters that attacked sailors and dragged whole ships under', dmg:1,
        fb:'No, gentle, harmless dugongs are thought to be behind the mermaid legends.'},
       {icon:'🌊', label:'Giant squid that dragged boats under', dmg:1,
        fb:'No, these gentle seagrass-grazers inspired the stories of mermaids.'}]}
@@ -2248,9 +2248,9 @@ const SPECIES = [
   cue:'A truly gigantic fish easing out from under a coral overhang.',
   intro:'A car-sized Queensland groper drifts up to a spearfisher who has a string of speared fish clipped to their belt.',
   actions:[
-    {icon:'🚫', label:'Don\'t feed it, and keep speared fish off your body', correct:true,
+    {icon:'🚫', label:'Keep speared fish off your body, and don\'t feed it', correct:true,
      fb:'Good call. Gropers this size are curious, not hunters, but one that\'s been fed will lunge for an easy meal, and that mouth can swallow a fish whole off your belt.'},
-    {icon:'🎣', label:'Hand it a speared fish so it hangs around', dmg:2,
+    {icon:'🎣', label:'Hand it one of your speared fish so it hangs around close by for the rest of the dive', dmg:2,
      fb:'Feeding a groper this size teaches it to snatch food near people, and that huge mouth can give a real fright, or a graze, taking it.'},
     {icon:'🤳', label:'Swim right up and pose in front of its mouth', dmg:1,
      fb:'It won\'t bite you on purpose, but startling a two-metre fish at arm\'s length is asking to be knocked about by the surge as it bolts.'}
@@ -2263,14 +2263,14 @@ const SPECIES = [
     actions:[
       {icon:'🚫', label:'Do not feed it, and keep speared fish off your body', correct:true,
        fb:'Right. Gropers this size are curious, not hunters, but one that expects food will lunge for an easy meal.'},
-      {icon:'🎣', label:'Hand it a speared fish so it hangs around', dmg:2,
+      {icon:'🎣', label:'Hand it one of your speared fish so it hangs around close by for the rest of the dive', dmg:2,
        fb:'Feeding teaches it to snatch food near people, and that huge mouth can give a real fright taking it.'},
       {icon:'🤳', label:'Swim right up and pose in front of its mouth', dmg:1,
        fb:'It will not bite you on purpose, but startling a two-metre fish at arm\'s length risks being knocked about as it bolts.'}]},
    /* interesting fact, largest bony reef fish, inhales prey */
    {intro:'What is remarkable about the Queensland groper\'s size and the way it feeds?',
     actions:[
-      {icon:'💡', label:'It is the largest bony fish on the reef and inhales its prey in one enormous gulp of water', correct:true,
+      {icon:'💡', label:'The largest bony fish on the reef, it inhales prey whole', correct:true,
        fb:'Right, it can reach the length of a car and simply sucks its prey straight in.'},
       {icon:'😬', label:'It tears prey apart with rows of sharp teeth', dmg:1,
        fb:'No, it inhales prey whole in one huge gulp of water.'},
@@ -2412,7 +2412,7 @@ const UPGRADES = {
     {id:'tank',   ico:'⛽', name:'Fuel Tank',       max:10, perRegion:2, base:50,
      desc:l=>`Carry more fuel and patrol further. Later levels add the most range, now ${fuelCap(l)} fuel${l<10?` (next: ${fuelCap(l+1)})`:''}.`},
     {id:'engine', ico:'🚤', name:'Outboard Motor',  max:10, perRegion:2, base:45,
-     desc:l=>`Cover more water before the tank runs dry. +6.5% speed per level, now ${Math.round(CFG.baseSpeed*(1+l*0.065))} kt.`},
+     desc:l=>`Cover more water before the tank runs dry. +10% speed per level, now ${Math.round(CFG.baseSpeed*(1+l*0.10))} kt.`},
     {id:'sonar',  ico:'📡', name:'Sonar & Lenses',  max:10, perRegion:2, base:55,
      desc:l=>`Spot creatures from further off, so nothing surprises you. +46 m per level, now ${CFG.baseDetect+l*46} m.`},
     {id:'kit',    ico:'🧰', name:'Safety Kit & Hull', max:10, perRegion:2, base:60,
@@ -2635,7 +2635,7 @@ function writeSave(){
 function fuelCap(lvl){ return Math.round(CFG.baseFuel + 5.6*lvl + 1.84*lvl*lvl); }
 const stat = {
   fuelMax:  ()=> fuelCap(save.up.tank),
-  speed:    ()=> CFG.baseSpeed  * (1 + save.up.engine * 0.065),
+  speed:    ()=> CFG.baseSpeed  * (1 + save.up.engine * 0.10),
   detect:   ()=> (CFG.baseDetect + save.up.sonar * 46) * ev('detectMul',1),
   hpMax:    ()=> CFG.baseHP     + save.up.kit    * 25,
   timer:    ()=> CFG.encTimerKnown + save.up.hazard * 1.8,
