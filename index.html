@@ -4138,8 +4138,8 @@ stinger: {
    nerve, the croc/wobbegong ambush lesson. */
 ambush: {
   title:'Ambush',
-  blurb:'Something big is lying still in the murky shallows. Edge closer to name it, but the moment it tenses, ease off, or it strikes.',
-  hint:'Hold <b>SPACE</b> (or <b>W</b>) to creep closer · STOP the instant it tenses up, or it lunges',
+  blurb:'Something big is lying still in the murky shallows. Edge closer to name it, but ease off the moment it tenses, and freeze completely whenever it lifts its head and stares at you.',
+  hint:'Hold <b>SPACE</b> (or <b>W</b>) to creep closer · freeze the moment it looks up: moving during <b>DO NOT APPROACH</b> gets you caught',
   spookLabel:'Startled',
   init(m, sp, a){
     const pace = sp.pace || 3;
@@ -4150,27 +4150,58 @@ ambush: {
     m.riseA = 0.9 + pace*0.075;         // alert climbs FAST, it tenses without much warning
     m.fallA = 0.75;
     m.lunge = 0; m.shake = 0; m.warn = 0; m.adv = false;
+    /* WATCH WINDOWS. It periodically lifts its head and stares straight at you.
+       Creeping during that window is caught instantly, which is what stops the
+       game being beaten by blindly tapping the key: you have to actually watch
+       the animal and freeze. A short "tell" leads each window so it is fair. */
+    m.calmBase = Math.max(0.85, 1.6 - pace*0.05);       // every animal looks up often enough to matter
+    m.tellLen  = Math.min(0.6, Math.max(0.28, 0.5 - pace*0.03 + a*0.05)); // knowledge buys a longer tell (capped)
+    m.phase = 'calm'; m.pt = m.calmBase*0.6 + Math.random()*m.calmBase;
+    m.watchLen = 0.9 + Math.random()*0.5;               // long enough to matter, short enough not to bore
+    m.grace = 0;                        // moment to release as a window opens
+    m.caught = 0;                       // "you moved" flash
+  },
+  strike(m, caught){
+    m.spook += caught ? 0.4 : 0.5;
+    m.near  = Math.max(0, m.near - (caught ? 0.25 : 0.3));
+    m.alert = 0.15; m.lunge = 0; m.shake = 1;
+    if(caught){
+      m.caught = 1;
+      m.phase = 'calm';                 // it resettles, so you are not struck twice over
+      m.pt = m.calmBase*0.8 + Math.random()*m.calmBase;
+    }
   },
   update(m, dt){
     m.t += dt;
     const advancing = !!(keys[' '] || keys['w'] || keys['arrowup']);
     m.adv = advancing;
-    if(advancing){
-      m.near  = Math.min(1, m.near + dt*0.2);
+
+    // cycle: calm -> tell (it lifts its head) -> watch (DO NOT APPROACH) -> calm
+    m.pt -= dt;
+    if(m.pt <= 0){
+      if(m.phase === 'calm'){ m.phase = 'tell'; m.pt = m.tellLen; }
+      else if(m.phase === 'tell'){ m.phase = 'watch'; m.pt = m.watchLen; m.grace = 0.3; }
+      else { m.phase = 'calm'; m.pt = m.calmBase*0.6 + Math.random()*m.calmBase;
+             m.watchLen = 0.9 + Math.random()*0.5; }
+    }
+    m.grace  = Math.max(0, m.grace - dt);
+    m.caught = Math.max(0, m.caught - dt*1.6);
+    const watching = (m.phase === 'watch');
+
+    if(advancing && watching && m.grace <= 0){
+      this.strike(m, true);             // caught moving while it stared straight at you
+    }else if(advancing){
+      m.near  = Math.min(1, m.near + dt*0.3);
       m.alert = Math.min(1.3, m.alert + dt*m.riseA);
     }else{
       m.alert = Math.max(0, m.alert - dt*m.fallA);
     }
     m.warn = Math.min(1, m.alert/m.thresh);
 
-    if(advancing && m.alert > m.thresh){
+    if(advancing && !watching && m.alert > m.thresh){
       // once it has tensed, the strike comes quickly, no dawdling in the danger zone
       m.lunge += dt*(1.9 + (m.alert - m.thresh)*6);
-      if(m.lunge >= 1){                 // STRIKE
-        m.spook += 0.5; m.shake = 1;
-        m.near = Math.max(0, m.near - 0.3);
-        m.alert = 0.15; m.lunge = 0;
-      }
+      if(m.lunge >= 1) this.strike(m, false);       // STRIKE
     }else{
       m.lunge = Math.max(0, m.lunge - dt*2);
     }
@@ -4184,10 +4215,18 @@ ambush: {
     grd.addColorStop(0,'#274a3a'); grd.addColorStop(1,'#0a1f18');
     g.fillStyle = grd; g.fillRect(-20,-20,MGW+40,MGH+40);
 
+    const watching = (m.phase === 'watch'), telling = (m.phase === 'tell');
+
     // the lurking animal, growing and sharpening as you close in
     const cx = MGW/2, cy = MGH*0.46;
-    g.save(); g.globalAlpha = 0.22 + m.near*0.75;
-    drawSpriteAt(g, sp, cx, cy, 60 + m.near*70);
+    if(watching){                       // it has locked onto you: a hard red glow behind it
+      const p = 0.55 + 0.45*Math.sin(m.t*9);
+      const rg = g.createRadialGradient(cx, cy, 10, cx, cy, 130 + m.near*60);
+      rg.addColorStop(0, `rgba(255,64,64,${0.34*p})`); rg.addColorStop(1, 'rgba(255,64,64,0)');
+      g.fillStyle = rg; g.fillRect(0, 0, MGW, MGH);
+    }
+    g.save(); g.globalAlpha = watching ? 1 : (0.22 + m.near*0.75);
+    drawSpriteAt(g, sp, cx, cy, (60 + m.near*70) * (watching ? 1.06 : 1));
     g.restore();
     // murky bank across the lower third, half-burying it
     g.fillStyle = 'rgba(24,46,32,.82)';
@@ -4198,10 +4237,21 @@ ambush: {
     // alertness read, no early gauge. It only tells when it is already tensing,
     // and by then you have a heartbeat to ease off. Watch the animal, not a bar.
     g.font = '800 15px system-ui, sans-serif'; g.textAlign='center'; g.textBaseline='middle';
-    if(m.warn >= 1){
+    if(watching){
+      // the hard stop: creeping now is caught instantly
+      g.strokeStyle = `rgba(255,48,48,${0.6+0.4*Math.sin(m.t*22)})`; g.lineWidth = 9;
+      g.strokeRect(5,5,MGW-10,MGH-10);
+      g.font = '800 21px system-ui, sans-serif'; g.fillStyle = '#ff4444';
+      g.fillText('⛔  DO NOT APPROACH', MGW/2, 26);
+      g.font = '600 13px system-ui, sans-serif'; g.fillStyle = 'rgba(255,190,190,.9)';
+      g.fillText('it is looking straight at you, freeze', MGW/2, 50);
+    }else if(m.warn >= 1){
       g.fillStyle = '#ff5555';
       g.fillText('⚠  IT\'S ABOUT TO STRIKE, EASE OFF', MGW/2, 22);
       g.strokeStyle = `rgba(255,60,60,${0.55+0.45*Math.sin(m.t*26)})`; g.lineWidth = 7; g.strokeRect(4,4,MGW-8,MGH-8);
+    }else if(telling){
+      g.fillStyle = `rgba(255,200,80,${0.6+0.4*Math.sin(m.t*20)})`;
+      g.fillText('it is lifting its head…', MGW/2, 22);
     }else if(m.warn > 0.62){
       // a brief, sharp tell as it starts to tense, the only warning you get
       const a2 = (m.warn-0.62)/0.38;
@@ -4210,6 +4260,13 @@ ambush: {
     }else{
       g.fillStyle = 'rgba(180,210,180,.7)';
       g.fillText(m.adv ? 'creeping closer…' : 'holding still', MGW/2, 22);
+    }
+    // "you moved" callout after being caught, so the lesson is explicit
+    if(m.caught > 0){
+      g.globalAlpha = Math.min(1, m.caught);
+      g.font = '800 17px system-ui, sans-serif'; g.fillStyle = '#ff6b6b';
+      g.fillText('You moved while it was watching!', MGW/2, MGH-24);
+      g.globalAlpha = 1;
     }
     g.restore();
   }

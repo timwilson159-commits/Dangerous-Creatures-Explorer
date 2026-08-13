@@ -4,6 +4,9 @@ TODO.md
 # Generated self-contained build — regenerate with: node bake.js
 dist/
 
+# Generated minigame test harness — regenerate with: node make_ambush_test.js
+ambush-test.html
+
 # Editor / OS cruft
 *.bak
 *.tmp
